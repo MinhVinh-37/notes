@@ -1,0 +1,15 @@
+version: "3.1"
+
+services:
+  db:
+    image: mysql:8.0.39
+    container_name: notes_db
+    enviroments: MYSQL
+      MYSQL_DATABASE: "notes"
+      MYSQL_USER: "notes_user"
+      MYSQL_PASSWORD: "notes_password"
+      MYSQL_HOST: "localhost"
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
