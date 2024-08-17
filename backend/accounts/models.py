@@ -41,6 +41,8 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     class Meta:
+        verbose_name = "user"
+        db_table = "user"
         unique_together = ("email", "oauth2_provider")
 
     USERNAME_FIELD = "uuid"
