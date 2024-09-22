@@ -16,11 +16,12 @@ class NoteViewSet(
     GenericViewSet,
 ):
     serializer_class = NoteSerializer
-    authentication_classes = [SessionAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [SessionAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        notes = Note.objects.filter(user=self.request.user)
+        # notes = Note.objects.filter(user=self.request.user)
+        notes = Note.objects.all()
         return notes
 
     def create(self, request: Request):
