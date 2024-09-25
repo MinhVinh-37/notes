@@ -15,6 +15,20 @@ from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 
 
+class LoginInitState(GenericAPIView):
+    authentication_classes = ()
+    permission_classes = ()
+
+    def post(self, request: Request) -> Response:
+        state = GoogleOauth2Service().generate_state()
+        request.session["google_oauth2_state"] = state
+        return Response(
+            {
+                "state": state,
+            }
+        )
+
+
 class RedirectGoogleLoginView(GenericAPIView):
     authentication_classes = ()
     permission_classes = ()

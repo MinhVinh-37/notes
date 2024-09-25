@@ -27,7 +27,7 @@ class GoogleOauth2Service:
         ]
         self.redirect_uri = f"http://127.0.0.1:8000{reverse('google-oauth2-callback')}"
 
-    def _generate_state(self) -> str:
+    def generate_state(self) -> str:
         rand = SystemRandom()
         state = "".join([rand.choice(UNICODE_ASCII_CHARACTER_SET) for _ in range(30)])
         return state
@@ -38,7 +38,7 @@ class GoogleOauth2Service:
             "https://www.googleapis.com/auth/userinfo.email",
             "openid",
         ]
-        state = self._generate_state()
+        state = self.generate_state()
 
         request_params = {
             "client_id": self.client_id,

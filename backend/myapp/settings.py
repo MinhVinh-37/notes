@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 
+from corsheaders.defaults import default_headers, default_methods
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -30,7 +31,7 @@ SECRET_KEY = "django-insecure-b_lb9499blk7m)(@2sig143ukaa%8u0h$+*(0gut8$6v1*dr69
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -139,9 +140,20 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.User"
 
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = default_methods
+CORS_ALLOW_HEADERS = list(default_headers) + ["cache-control", "pragma", "expires"]
+
+# SESSION_COOKIE_SECURE = False
+# SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = "Strict"
+SESSION_COOKIE_AGE = 4 * 7 * 24 * 60 * 60
+SESSION_COOKIE_NAME = "vinhsessionid"
 
 
 REST_FRAMEWORK = {

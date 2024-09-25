@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import Note from "./Note";
-import CreateArea from "./CreateArea";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Note from "../components/Note";
+import CreateArea from "../components/CreateArea";
 
-export default function App() {
+export default function Home() {
   var [items, setItems] = useState([{ title: "test", content: "test too" }]);
 
   useEffect(() => {

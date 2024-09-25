@@ -1,4 +1,9 @@
-from authen.views import CallbackGoogleLoginView, LogoutView, RedirectGoogleLoginView
+from authen.views import (
+    CallbackGoogleLoginView,
+    LoginInitState,
+    LogoutView,
+    RedirectGoogleLoginView,
+)
 from django.urls import path
 
 urlpatterns = [
@@ -16,5 +21,10 @@ urlpatterns = [
         "logout",
         LogoutView.as_view(),
         name="logout",
+    ),
+    path(
+        "google/init_state",
+        LoginInitState.as_view(),
+        name="login-init-state",
     ),
 ]
